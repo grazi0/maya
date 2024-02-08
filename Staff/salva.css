@@ -1,0 +1,45 @@
+* {
+  margin: 0px;
+  padding: 0;
+}
+
+#reportList li {
+  cursor: pointer;
+  padding: 13px; /* Aumentado para mais espaço interno */
+  margin-bottom: 10px; /* Adicionado para criar espaço entre os itens */
+  border-bottom: 1px solid #000000;
+  display: block;
+  align-items: center;
+  width: 52%; /* Largura total */
+  background-color: #322c4d; /* Cor de fundo inicial */
+  transition: box-shadow 0.3s ease, background-color 0.3s ease, transform 0.3s ease; /* Animação suave */
+}
+
+#reportList li:hover {
+  background-color: #564D80; /* Cor de fundo no hover */
+  box-shadow: 0 1px 1px #0000004d; /* Sombra para efeito de elevação */
+  transform: translateY(5px); /* Move o item para baixo em 5px */
+}
+
+#reportList li span {
+  font-size: 14px;
+  margin-left: 90px; /* Espaço à esquerda do texto */
+  transition: transform 0.3s ease, color 0.3s ease; /* Animação suave */
+}
+
+.main-layout {
+  display: block;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 1vh; /* Altura do layout principal */
+  padding-top: 10px; /* Espaço no topo */
+  padding-bottom: 1px; /* Espaço na base */
+}
+
+#reportList {
+  width: 45%;
+  height: auto;
+  margin-right: 1px; /* Ajuste conforme o layout */
+  overflow-y: auto;
+}

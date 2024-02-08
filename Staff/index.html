@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-adsense-account" content="ca-pub-1786239561754453">
+    <title>Relatório</title>
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <link rel="stylesheet" type="text/css" href="./css/menu.css">
+    <link rel="stylesheet" type="text/css" href="./css/menu.css">
+    <link rel="stylesheet" type="text/css" href="calculadora.css">
+    <link rel="stylesheet" type="text/css" href="salva.css"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="./script/script.js" defer></script>
+    <script src="./script/emojis.js" defer></script>
+    <script src="./script/pendencia.js" defer></script>
+    <script src="./calculadora.js"defer></script>
+    <script src="./multa.js"defer></script>
+    <script src="./calculadora.js"defer></script>
+    <script src="./salva.js"defer></script>
+    <script src="./nome.js"defer></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1786239561754453"
+     crossorigin="anonymous"></script>
+
+    <link rel="icon" type="image/png" href="./IMG/DALLE_2023-12-26_11-fotor-bg-remover-2023123104439.png">
+
+</head>
+<body>
+
+<div class="main-layout">
+    <ul id="reportList">
+        <!-- Itens da lista aqui -->
+    </ul>
+    <div class="content">
+        <!-- Seu conteúdo atual aqui -->
+    </div>
+</div>
+
+
+
+    <div class="main-container">
+        <div class="container">
+
+            <button id="saveReportButton">Salvar Relatório</button>
+            <button id="clearReportsButton">Limpar Relatórios</button>
+            <button id="openWebPageButton">Verificar Logs baú</button>
+            
+
+            <script>
+            document.getElementById("openWebPageButton").addEventListener("click", function() {
+                window.open("https://logs-bau.vercel.app/", "_blank");
+            });
+            </script>
+            
+
+        
+
+
+    
+        <div class="emoji-selector">
+            <select id="emojiSelector">
+                <option value="" disabled selected hidden>Animações</option>
+                <option value="fogopreto:" data-emoji="🔥⚫">🔥⚫Fogo</option>
+                <option value="e_stitchdancando:" data-emoji="🔥⚫">stich</option>
+                <option value="azul15:" data-emoji="🔥⚫">stich NÃO</option>
+               
+               
+               
+
+            </select>
+        </div>
+        <span id="selectedEmoji" class="selected-emoji"></span>
+        
+        
+
+
+
+        <div class="form-group">
+            <div class="form-group">
+            </div>
+            <div class="emoji-dropdown">
+                <button id="emojiButton" class="emoji-button">Escolha um Emoji</button>
+                <div id="emojiList" class="emoji-list">
+                    <span class="emoji-option" onclick="selectEmoji('🐱')">🐱</span>
+                    <span class="emoji-option" onclick="selectEmoji('🐯')">🐯</span>
+                    <span class="emoji-option" onclick="selectEmoji('🐲')">🐲</span>
+                    <span class="emoji-option" onclick="selectEmoji('🤡')">🤡</span>
+                    <span class="emoji-option" onclick="selectEmoji('🦆')">🦆</span>
+                    <span class="emoji-option" onclick="selectEmoji('🐔')">🐔</span>
+                    <span class="emoji-option" onclick="selectEmoji('🐵')">🐵</span>
+                    <div class="dropdown">
+                    </div>
+                    
+                <h3></h3>
+                <span class="emoji-option" onclick="selectEmoji('💀')">💀</span>
+                <span class="emoji-option" onclick="selectEmoji('☠️')">☠️</span>
+                <span class="emoji-option" onclick="selectEmoji('🦴')">🦴</span>      
+                </div>
+            </div>
+            <span id="selectedEmoji" class="selected-emoji"></span>
+        </div>
+    
+        <div class="logo">
+            <a href="pagina_inicial.html">
+                <img src="./IMG/DALLE_2023-12-26_11-fotor-bg-remover-2023123104439.png" alt="Logotipo da Empresa" height="100" width="100">
+            </a>
+        </div>    
+
+
+        <h1>Relatório</h1>
+        <form id="caseForm">
+            <div class="form-group">
+                <label for="resolvedByID" class="title-color">Resolvido Por:</label>
+                <input type="text" id="resolvedByID" name="resolvedByID" placeholder="ID DO DISCORD">
+                <input type="text" id="resolvedDate" name="resolvedDate" readonly>
+            </div>
+            <div class="form-group">
+                <label for="complainantDiscordID" class="title-color">Denunciante:</label>
+                <input type="text" id="complainantDiscordID" name="complainantDiscordID" placeholder="ID DO DISCORD">
+                <input type="text" id="complainantGameID" name="complainantGameID" placeholder="ID NA CIDADE">
+            </div>
+            <div class="form-group">
+                <label for="accusedDiscordID" class="title-color">Denunciado:</label>
+                <input type="text" id="accusedDiscordID" name="accusedDiscordID" placeholder="ID DO DISCORD">
+                <input type="text" id="accusedGameID" name="accusedGameID" placeholder="ID NA CIDADE"> 
+            </div>
+
+            <div class="form-group vertical">
+                <label for="judgment" class="title-color">Julgamento:</label>
+                <select id="judgment" name="judgment" onchange="updateJudgmentEmoji()">
+                    <option value="">Selecione</option>
+                    <option value="Aprovado">APROVADO</option>
+                    <option value="Negado">NEGADO</option>
+                </select>
+                <span id="judgmentEmoji"></span>
+            </div>
+            <div class="form-group vertical">
+                <label for="reason" class="title-color">Motivo:</label>
+                <input type="text" id="reason" name="reason" placeholder="Motivo">
+            </div>
+            <div class="form-group vertical">
+                <label for="tagID" class="title-color">Tag:</label>
+                <select id="tagID" name="tagID">
+                    <option value="">Escolha uma Tag</option>
+                    <option value="N/A">N/A</option>
+                    <option value="1171214235334877257">VERBAL</option>
+                    <option value="1171214303320354906">ADV1</option>
+                    <option value="1171214308760363099">ADV2</option>
+                    <option value="1171214363089182790">BANIDO</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="fineField" style="display: none;">
+                
+                <label for="fineAmount" class="title-color">Multa:</label>
+                <input type="text" id="fineAmount" name="fineAmount" placeholder="Digite a quantidade da multa">
+            </div>
+        
+            <div class="form-group" id="pendencyField">
+                <label for="pendency" class="title-color">Itens:</label>
+                <input type="text" id="pendency" name="pendency" placeholder="Digite os itens e quantidades" oninput="calculateFine()">
+                <div id="spawnResults" class="spawn-results"></div>
+            </div>
+            
+            
+            <div class="form-group vertical">
+                <label for="evidence" class="title-color">Provas:</label>
+                <input type="text" id="evidence" name="evidence" placeholder="URL do vídeo">
+            </div>
+
+
+
+            <button type="button" onclick="copyText()">Copiar 📋 ┇Resultado-denuncia</button>
+            <button type="button" onclick="copySelectedTopics()">Copiar 📁┇advertências-e-banimentos </button>
+            <button type="button" id="toggleFineButton">Abrir 📂 🔢 ┇relatorio-multas e Calculadora </button>
+            <button type="button" id="copyFineButton" onclick="copyFineDetails()">Copiar 📂┇relatorio-multas</button>
+            <button type="button" id="togglePendencyButton">Abrir 📦┇pendências </button>
+            <button type="button" id="copyDetailsButton">Copiar 📦┇pendências</button>
+
+            <textarea id="output" readonly style="height: 180px; width: 99%;"></textarea>
+            
+        </form>
+            </div>
+
+           
+
+            
+            <footer class="footer">
+
+                <p>&copy; 2023 Nathan Todos os direitos reservados.</p>
+                <a href="https://discord.gg/gddANa9zs5" target="_blank" class="discord-link">
+                    <i class="fab fa-discord"></i>
+                </a>
+            </footer>
+    </div>
+    </div>
+
+
+
+
+
+    <div class="calculator-shadow-container">
+        <div class="calculator-container" id="calculator" style="display: none;">
+        <div class="calculator-container">
+            <div class="category-section">
+
+            <h2>Itens Lojinha</h2>
+        
+            <div class="item-list">
+            
+                <div class="item-row">
+                    <label for="item2Qty">ENERGÉTICO</label>
+                    <input type="number" id="item2Qty" data-price="20000" min="0" class="item-qty">
+                </div>
+                
+                <div class="item-row">
+                    <label for="item3Qty">ROUPA</label>
+                    <input type="number" id="item3Qty" data-price="5000" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item4Qty">RADIO</label>
+                    <input type="number" id="item4Qty" data-price="1000" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item5Qty">BINOCULOS</label>
+                    <input type="number" id="item5Qty" data-price="650" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item6Qty">REPAIRKIT</label>
+                    <input type="number" id="item6Qty" data-price="26000" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item7Qty">PNEU</label>
+                    <input type="number" id="item7Qty" data-price="2600" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item8Qty">CELULAR</label>
+                    <input type="number" id="item8Qty" data-price="1300" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item9Qty">MILITEC</label>
+                    <input type="number" id="item9Qty" data-price="19500" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item10Qty">OXIGENIO</label>
+                    <input type="number" id="item10Qty" data-price="2600" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item11Qty">RACAO</label>
+                    <input type="number" id="item11Qty" data-price="70" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item12Qty">ALIANCA</label>
+                    <input type="number" id="item12Qty" data-price="390" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item13Qty">CORDAS</label>
+                    <input type="number" id="item13Qty" data-price="6500" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item14Qty">PARAQUEDAS</label>
+                    <input type="number" id="item14Qty" data-price="15600" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item15Qty">MOCHILA</label>
+                    <input type="number" id="item15Qty" data-price="22100" min="0" class="item-qty">
+                </div>
+            </div>
+            </div>
+
+        
+
+         
+            <div class="category-section">
+                <h2>Joias</h2>
+                <div class="item-list">
+                    <div class="item-row">
+                        <label for="item16Qty">BRONZE</label>
+                        <input type="number" id="item16Qty" data-price="1560" min="0" class="item-qty">
+                    </div>
+                    <div class="item-row">
+                        <label for="item17Qty">DIAMANTE</label>
+                        <input type="number" id="item17Qty" data-price="2340" min="0" class="item-qty">
+                    </div>
+                    <div class="item-row">
+                        <label for="item18Qty">ESMERALDA</label>
+                        <input type="number" id="item18Qty" data-price="2080" min="0" class="item-qty">
+                    </div>
+                    <div class="item-row">
+                        <label for="item19Qty">TOPAZIO</label>
+                        <input type="number" id="item19Qty" data-price="1820" min="0" class="item-qty">
+                    </div>
+                    <div class="item-row">
+                        <label for="item20Qty">RUBI</label>
+                        <input type="number" id="item20Qty" data-price="2340" min="0" class="item-qty">
+                    </div>
+                    <div class="item-row">
+                        <label for="item21Qty">SAFIRA</label>
+                        <input type="number" id="item21Qty" data-price="1820" min="0" class="item-qty">
+                    </div>
+                    <div class="item-row">
+                        <label for="item22Qty">AMETISTA</label>
+                        <input type="number" id="item22Qty" data-price="1560" min="0" class="item-qty">
+                    </div>
+                    <div class="item-row">
+                        <label for="item23Qty">FERRO</label>
+                        <input type="number" id="item23Qty" data-price="1560" min="0" class="item-qty">
+                    </div>
+                    <div class="item-row">
+                        <label for="item24Qty">OURO</label>
+                        <input type="number" id="item24Qty" data-price="2080" min="0" class="item-qty">
+                    </div>
+                </div>
+            </div>
+
+
+                      
+            <div class="category-section">
+                <h2>Pescaria</h2>
+                <div class="item-list">
+                    <div class="item-row">
+                        <label for="item25Qty">TUCUNARE</label>
+                        <input type="number" id="item25Qty" data-price="300" min="0" class="item-qty">
+                    </div>
+                    <div class="item-row">
+                        <label for="item26Qty">SALMAO</label>
+                        <input type="number" id="item26Qty" data-price="350" min="0" class="item-qty">
+                    </div>
+                    <div class="item-row">
+                        <label for="item27Qty">DOURADO</label>
+                        <input type="number" id="item27Qty" data-price="280" min="0" class="item-qty">
+                    </div>
+                    <div class="item-row">
+                        <label for="item28Qty">TILAPIA</label>
+                        <input type="number" id="item28Qty" data-price="300" min="0" class="item-qty">
+                    </div>
+                    <div class="item-row">
+                        <label for="item29Qty">PIRARUCU</label>
+                        <input type="number" id="item29Qty" data-price="300" min="0" class="item-qty">
+                    </div>
+                    <div class="item-row">
+                        <label for="item30Qty">CORVINA</label>
+                        <input type="number" id="item30Qty" data-price="300" min="0" class="item-qty">
+                    </div>
+                    <div class="item-row">
+                        <label for="item31Qty">LAMBARI</label>
+                        <input type="number" id="item31Qty" data-price="280" min="0" class="item-qty">
+                    </div>
+                    <div class="item-row">
+                        <label for="item32Qty">PINTADO</label>
+                        <input type="number" id="item32Qty" data-price="280" min="0" class="item-qty">
+                    </div>
+                    <div class="item-row">
+                        <label for="item33Qty">PACU</label>
+                        <input type="number" id="item33Qty" data-price="280" min="0" class="item-qty">
+                    </div>
+                </div>
+        </div>
+    
+
+        <div class="category-section">
+            <h2>Remédio</h2>
+            <div class="item-list">
+                <div class="item-row">
+                    <label for="bandagemQty">BANDAGEM</label>
+                    <input type="number" id="bandagemQty" data-price="39000" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="dorflexQty">DORFLEX</label>
+                    <input type="number" id="dorflexQty" data-price="19500" min="0" class="item-qty">
+                </div>
+            </div>
+        </div>
+        
+        <div class="category-section">
+            <h2>Ilegal</h2>
+            <div class="item-list">
+                <div class="item-row">
+                    <label for="item2Qty1">FIVE SEVEN</label>
+                    <input type="number" id="item2Qty1" data-price="520000" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty2">MUNI FIVE SEVEN</label>
+                    <input type="number" id="item2Qty2" data-price="4680" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty3">GLOCK</label>
+                    <input type="number" id="item2Qty3" data-price="520000" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty4">MUNI GLOCK</label>
+                    <input type="number" id="item2Qty4" data-price="4680" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty5">AK - 47</label>
+                    <input type="number" id="item2Qty5" data-price="1099800" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty6">MUNI AK-47</label>
+                    <input type="number" id="item2Qty6" data-price="11180" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty7">MTAR - 21</label>
+                    <input type="number" id="item2Qty7" data-price="916500" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty8">MUNI MTAR-21</label>
+                    <input type="number" id="item2Qty8" data-price="7475" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty9">THOMPSON</label>
+                    <input type="number" id="item2Qty9" data-price="3000" min="0" class="item-qty">
+                </div>
+
+                <div class="item-row">
+                    <label for="item2Qty10">ADVANCED AUG</label>
+                    <input type="number" id="item2Qty10" data-price="774000" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty11">MUNI AUG</label>
+                    <input type="number" id="item2Qty11" data-price="5700" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty12">G-36</label>
+                    <input type="number" id="item2Qty12" data-price="900000" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty13">MUNI G-36</label>
+                    <input type="number" id="item2Qty13" data-price="6000" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty14">PISTOL MACHINE</label>
+                    <input type="number" id="item2Qty14" data-price="635700" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty15">MUNI MACHINE</label>
+                    <input type="number" id="item2Qty15" data-price="5590" min="0" class="item-qty">
+                </div>
+            </div>
+        </div>
+        
+        <div class="category-section">
+            <h2>Ilegal 2</h2>
+            <div class="item-list">
+                <div class="item-row">
+                    <label for="item2Qty16">FUZIL M4A4</label>
+                    <input type="number" id="item2Qty16" data-price="1319500" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty17">MUNI M4A4</label>
+                    <input type="number" id="item2Qty17" data-price="9360" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty18">AK - 103</label>
+                    <input type="number" id="item2Qty18" data-price="572000" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty19">MUNI AK-103</label>
+                    <input type="number" id="item2Qty19" data-price="4100" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty20">ARMAS BRANCA</label>
+                    <input type="number" id="item2Qty20" data-price="390000" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty21">CANIVETE</label>
+                    <input type="number" id="item2Qty21" data-price="000" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty22">PÉ DE CABRA</label>
+                    <input type="number" id="item2Qty22" data-price="156000" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty23">ALICATE</label>
+                    <input type="number" id="item2Qty23" data-price="65000" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty24">TICKET CORRIDA</label>
+                    <input type="number" id="item2Qty24" data-price="26000" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty25">COLETE</label>
+                    <input type="number" id="item2Qty25" data-price="156000" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty26">ALGEMAS</label>
+                    <input type="number" id="item2Qty26" data-price="52000" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty27">CAPUZ</label>
+                    <input type="number" id="item2Qty27" data-price="52000" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty28">LOCKPICK</label>
+                    <input type="number" id="item2Qty28" data-price="49400" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty29">FARME</label>
+                    <input type="number" id="item2Qty29" data-price="2600" min="0" class="item-qty">
+                </div>
+                <div class="item-row">
+                    <label for="item2Qty30">DROGAS</label>
+                    <input type="number" id="item2Qty30" data-price="2600" min="0" class="item-qty">
+                </div>
+            </div>
+        </div>
+        
+                        <div id="total" class="total-display">Total: R$</div>
+
+                        
+
+                        <footer class="footer">
+
+                            <p>&copy; 2023 Nathan Todos os direitos reservados.</p>
+                            <a href="https://discord.gg/gddANa9zs5" target="_blank" class="discord-link">
+                                <i class="fab fa-discord"></i>
+                            </a>
+                        </footer>
+
+</body>
+</html>

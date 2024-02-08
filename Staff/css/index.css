@@ -1,0 +1,168 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: linear-gradient(to left, #260938, #050008 50%, #260938 100%);
+    color: #ffffff;
+    height: auto;
+    min-height: 100vh;}
+
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Garante que o conteúdo seja empilhado verticalmente */
+    min-height: 100vh; /* Isso garante que o .main-container seja pelo menos tão alto quanto a janela de visualização */
+    width: 100%; /* Isso garante que o .main-container ocupe toda a largura da tela */
+    z-index: 1000; /* Ou um valor adequado para o seu design */
+    
+      
+}
+
+
+.container {
+    width: 45%; /* Reduzi a largura para 30% */
+    background-image: linear-gradient(to left, #260938, #2a1d35 50%, #260938 100%);
+    padding: 1px; /* Reduzi o espaçamento interno para 5px */
+    box-shadow: 0 2px 4px rgb(139, 125, 125); /* Ajustei a sombra */
+    border-radius: 10px; /* Aumentei o raio do border-radius para suavizar os cantos */
+    text-align: center;
+}
+
+
+h1 {
+    color: #dcdcdc;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1px;
+    text-align: left;
+}
+
+
+.form-group label {
+    margin-right: 1PX;
+    flex: 0 0 130px;
+    text-align: right;
+}
+
+.form-group input, .form-group select {
+    flex: 1;
+    padding: 7px;
+    border-radius: 7px;
+    background-color: #150420;
+    color: #ffffff;
+    transition: border-color 0.1s, box-shadow 0.1s;
+    box-shadow: 0 2px 2px rgb(250, 250, 250); /* Sombra sutil para combinar com o container */
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: #544664; /* Cor da borda ao focar para adicionar um toque do gradiente */
+    box-shadow: 0 2px 4px rgba(84, 70, 100, 0.4); /* Sombra mais intensa ao focar */
+}
+
+button {
+    padding: 10px 13px;
+    border: none;
+    border-radius: 6px;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.10s;
+    background-image: linear-gradient(to left, #260938, #14012c 50%, #4b3c5b 60%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all 0.5s ease-out;
+}
+
+button:hover {
+    background-position: left bottom;
+}
+
+
+
+button:hover {
+    background-color: #000000;
+}
+
+
+
+#pendencyField {
+    display: none; /* mantenha-o escondido inicialmente */
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+#pendency {
+    flex: 1;
+    padding: 7px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #14012c;
+    color: #ffffff;
+}
+
+
+
+
+@media (min-width: 1024px) and (max-width: 1080px) {
+    .container {
+        width: 60%; /* Ajusta a largura do container */
+    }
+    .form-group label {
+        flex: 0 0 120px; /* Ajusta a largura dos labels */
+    }
+}
+
+
+/* Ajustes de Responsividade */
+@media (max-width: 768px) {
+    .container {
+        width: 70%;
+    }
+    .form-group label {
+        flex: 0 0 100px;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
+    .form-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .form-group label {
+        margin-bottom: 5px;
+        text-align: left;
+    }
+}
+
+@media (max-width: 768px) {
+    .calculator-container {
+      justify-content: center;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .calculator-container {
+      width: 95%;
+      gap: 10px;
+    }
+}
+
+
+
